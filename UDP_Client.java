@@ -1,9 +1,6 @@
- 
-
 import java.net.*;
 import java.io.*;
 import java.util.*;
-
 
 public class UDP_Client {
 	private static final int TIMEOUT  = 3000;  // Resend timeout (milliseconds)
@@ -86,5 +83,4 @@ public class UDP_Client {
     	
     	socket.close();
     }
-}
-		
+}		
