@@ -51,28 +51,25 @@ public class UDP_Server implements Cloneable, Runnable
 		public void run(){
 			if (socket != null){
 				while (!shouldStop){
-			
-						try{							   
-								while (true) { // Run forever, receiving and echoing datagrams  // Receive packet from client
-								packet = new DatagramPacket(new byte[255], ECHOMAX);
-								socket.receive(packet);
-								System.out.println("Handling client at " + socket.getLocalPort() + " on port " + packet.getPort() + " message: " + new String(packet.getData()));
-								System.out.println(packet.getPort() + " " + packet.getAddress());
-								socket.send(packet); 
-								packet.setData(new byte[255], 0, 254);
-							} 
-							}
-							catch(IOException e){								
-							}
-		   }
+					try{							   
+						while (true) 
+						{ // Run forever, receiving and echoing datagrams  // Receive packet from client
+							packet = new DatagramPacket(new byte[255], ECHOMAX);
+							socket.receive(packet);
+							System.out.println("Handling client at " + socket.getLocalPort() + " on port " + packet.getPort() + " message: " + new String(packet.getData()));
+							System.out.println(packet.getPort() + " " + packet.getAddress());
+							socket.send(packet); 
+							packet.setData(new byte[255], 0, 254);
+						} 
+					}
+					catch(IOException e){}
+		   		}
 				
+			}
 		}
-	}
 		
 		public static class Lname extends Thread{
 			public void run() {
-				
-				
 				try {
 					DatagramSocket socketx = new DatagramSocket();
 					socketx = new DatagramSocket(PORT1);
@@ -87,33 +84,18 @@ public class UDP_Server implements Cloneable, Runnable
 					System.out.println("Connected...");
  
 					
-				} catch (IOException e) {
+					} catch (IOException e) {
 					// TODO Auto-generated catch block
 			 
-				}
-				}
+					}
 			}
+		}
 		
 		public class clients {
-		    //attributes
+			//attributes
 			String ip; 
-		    String name;
-		    public clients(String a, String ip){
-		    	this.ip = ip;
-		    	name    = a;
-		    }
+			String name;
+			public clients(String a, String ip){this.ip = ip; name    = a;}
  
 		}
-		
-		
-		}
-		
-	
-	
-		
-		
-		
-    
-
-  
- 
+	} 
